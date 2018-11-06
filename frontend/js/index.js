@@ -1,8 +1,92 @@
 const Dapp = {
+
+
   userAddress: undefined,
   goldenSupplyChain: null,
   pollFactoryAddress: null, // TODO : remove
-  createNewAccount: function() {
+  getFactory: function() {
+    var goldenSupplyChainContract = Dapp.web3.eth.contract(
+      JSON.parse(compiledSupplyChain.interface)
+    );
+    return goldenSupplyChainContract.at(Dapp.pollFactoryAddress);
+  },
+
+  createProduct: function () {
+    var factory = this.getFactory();
+  },
+  createNewAccount: function () {
+    Dapp.web3.personal.newAccount(
+      prompt("Please enter your password"),
+      function (error, address) {
+        if (error) {
+          alert(error);
+        } else {
+          Dapp.setUserAddress(address);
+          $(".nav-tabs .nav-link").removeClass("disabled");
+        }
+      }
+    );
+  },
+
+  inputUserAddress: function () {
+    var address = prompt("Please enter address", "0x");
+    if (!Dapp.web3.isAddress(address)) {
+      alert("Please input a valid address!");
+      return;
+    }
+
+    Dapp.web3.personal.unlockAccount(
+      address,
+      prompt("Please enter your password for this address"),
+      function (error, result) {
+        if (error) {
+          alert(error);
+        } else {
+          Dapp.setUserAddress(address);
+          $(".nav-tabs .nav-link").removeClass("disabled");
+        }
+      }
+    );
+  },
+  setUserAddress: function (address) {
+    Dapp.userAddress = address;
+    $(".user-address").text(address);
+    Dapp.refreshUserBalance();
+  },
+
+  refreshUserBalance: function () {
+    if (Dapp.userAddress) {
+      Dapp.web3.eth.getBalance(Dapp.userAddress, function (error, weiAmount) {
+        var ethValue = Dapp.web3.fromWei(weiAmount, "ether");
+        $(".user-balance").text(ethValue);
+      });
+    }
+  },
+  deployGoldenSupplyChain: function () {
+    var goldenSupplyChainContract = Dapp.web3.eth.contract(
+      JSON.parse(compiledSupplyChain.interface)
+    );
+    console.log("Deployed supply chain...");
+    goldenSupplyChainContract.new(
+      {
+        from: Dapp.userAddress,
+        data: compiledSupplyChain.bytecode,
+        gas: "4700000"
+      },
+      function (e, contract) {
+        if (typeof contract.address !== "undefined") {
+          Dapp.pollFactoryAddress = contract.address;
+          $("#pollFactoryAddress").text(contract.address);
+         
+          console.log("PollFactory's address: " + contract.address);
+        }
+      }
+    );
+    
+  }
+
+
+  /* createNewAccount: function() {
     Dapp.web3.personal.newAccount(
       prompt("Please enter your password"),
       function(error, address) {
@@ -77,14 +161,14 @@ const Dapp = {
     
   } ,
   deployPollFactory: function() {
-    var pollfactoryContract = Dapp.web3.eth.contract(
-      JSON.parse(compiledFactory.interface)
+    var goldenSupplyChainContract = Dapp.web3.eth.contract(
+      JSON.parse(compiledSupplyChain.interface)
     );
     console.log("Deploying poll factory...");
-    pollfactoryContract.new(
+    goldenSupplyChainContract.new(
       {
         from: Dapp.userAddress,
-        data: compiledFactory.bytecode,
+        data: compiledSupplyChain.bytecode,
         gas: "4700000"
       },
       function(e, contract) {
@@ -110,8 +194,7 @@ const Dapp = {
       }
     });
 
-    /* we can deploy Poll directly without PollFactory but we can not keep track all the poll's address */
-    // var pollContract = Dapp.web3.eth.contract(
+     // var pollContract = Dapp.web3.eth.contract(
     //   JSON.parse(compiledPoll.interface)
     // );
     // var poll = pollContract.new(
@@ -236,7 +319,7 @@ const Dapp = {
   },
   getPollFactory: function() {
     var factoryContract = Dapp.web3.eth.contract(
-      JSON.parse(compiledFactory.interface)
+      JSON.parse(compiledSupplyChain.interface)
     );
     return factoryContract.at(Dapp.pollFactoryAddress);
   },
@@ -316,12 +399,12 @@ const Dapp = {
     var options = this.getPollOptions(pollContract);
     var pollTemplate = doT.template(document.getElementById('templateVoteResult').text, undefined, undefined);
 		document.getElementById('votingContainer').innerHTML = pollTemplate({'address': pollAddress, 'question': pollContract.question(), 'options': options});
-  }
+  } */
 };
 var intRefreshBalance = setInterval(Dapp.refreshUserBalance, 2000);
 var intRefreshStatus = setInterval(Dapp.refreshNodeStatus, 2000);
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
   if (typeof web3 !== "undefined") {
     console.log("Web3 Detected! " + web3.currentProvider.constructor.name);
     Dapp.web3 = new Web3(web3.currentProvider);
@@ -332,6 +415,6 @@ window.addEventListener("load", function() {
     );
   }
 
-//   Dapp.setUserAddress(Dapp.web3.eth.accounts[0]);
-//   $(".nav-tabs .nav-link").removeClass("disabled");
+  //   Dapp.setUserAddress(Dapp.web3.eth.accounts[0]);
+  //   $(".nav-tabs .nav-link").removeClass("disabled");
 });
