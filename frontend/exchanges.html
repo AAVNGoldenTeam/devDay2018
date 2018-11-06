@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Product</title>
+    <title>Exchanges</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,11 +30,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Products</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="exchanges.html">Exchanges</a>
+                    <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Exchanges</a>
                 </li>
 
                 <li class="nav-item">
@@ -51,43 +51,14 @@
     <main role="main" class="container">
 
         <div class="header col-12">
-            <form class="form-default">
-                <div class="col-12 text-center">
-                    <h1 class="h3 mb-3 font-weight-normal">Create product</h1>
-                </div>
-
-                <div class="row">
-                    <div class="col-3">
-                        <label>Product name</label>
-                    </div>
-                    <div class="col-9">
-                        <input type="text" id="inputProductName" class="form-control" placeholder="Inter product name"
-                            required autofocus>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-3">
-                        <label>Price</label>
-                    </div>
-                    <div class="col-9">
-                        <input type="text" id="inputPrice" class="form-control" placeholder="Inter product price"
-                            required>
-                    </div>
-                </div>
-
-
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
-            </form>
-        </div>
-        <div class="detail col-12">
-            <table id="productList" class="table">
+            <h1 class="h3 mb-3 font-weight-normal">Please choose product(s) to buy.</h1>
+            <table id="productList" class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Product Name</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col" class="input-quantity-col">Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,57 +66,46 @@
                         <th scope="row">1</th>
                         <td class="name-col">
                             <label>ABC</label>
-                            <input type="text" id="inputProductName" class="form-control" placeholder="Inter product name">
                         </td>
                         <td class="price-col">
                             <label>10</label>
-                            <input type="text" id="inputPrice" class="form-control" placeholder="Inter product price">
-                        </td>
-                        <td>
-                            <a href="#" class="action-edit">
-                                <i class="fa fa-edit"></i>
-                            </a>
-
-                            <a href="#" class="color-red">
-                                <i class="fa fa-trash-alt"></i> 
-                            </a>
+                        <td class="input-quantity-col">
+                            <input type="number" class="form-control input-quantity" placeholder="Inter number of unit(s) to buy."
+                                value="0">
                         </td>
                     </tr>
                     <tr name="XYZ" class="product-row">
                         <th scope="row">2</th>
                         <td>
                             <label>XYZ</label>
-                            <input type="text" id="inputProductName" class="form-control" placeholder="Inter product name">
                         </td>
                         <td>
                             <label>10</label>
-                            <input type="text" id="inputPrice" class="form-control" placeholder="Inter product price">
                         </td>
-                        <td>
-                            <a href="#" class="action-edit">
-                                <i class="fa fa-edit"></i>
-                            </a>
-
-                            <a href="#" class="color-red">
-                                <i class="fa fa-trash-alt"></i>
-                            </a>
+                        <td class="input-quantity-col">
+                            <input type="number" class="form-control input-quantity" placeholder="Inter number of unit(s) to buy."
+                                value="0">
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-9"> </div>
+                <div class="col-3">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Buy</button>
+                </div>
+            </div>
+        </div>
+        <div class="detail col-12">
+
         </div>
     </main>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#productList').find('input').hide();
-            $('.action-edit').on('click', function() {
-                var $parent = $(this).parents('tr[name]');
-                $parent.find('label').hide();
-                $parent.find('input').show();
-            });
+        $(document).ready(function () {
+
         });
     </script>
 

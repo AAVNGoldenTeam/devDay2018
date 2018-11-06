@@ -57,3 +57,9 @@ body {
 .color-red {
   color: red;
 }
+.input-quantity-col {
+  width: 250px;
+}
+.input-quantity {
+  max-width: 200px;
+}
