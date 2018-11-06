@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Exchanges</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.css">
+
+
+    <link href="css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Golden Supply Chain Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="products.html">Products</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Exchanges</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Transactions</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+
+        <div class="header col-12">
+            <h1 class="h3 mb-3 font-weight-normal">Please choose product(s) to buy.</h1>
+            <table id="productList" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" class="input-quantity-col">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr name="ABC" class="product-row">
+                        <th scope="row">1</th>
+                        <td class="name-col">
+                            <label>ABC</label>
+                        </td>
+                        <td class="price-col">
+                            <label>10</label>
+                        <td class="input-quantity-col">
+                            <input type="number" class="form-control input-quantity" placeholder="Inter number of unit(s) to buy."
+                                value="0">
+                        </td>
+                    </tr>
+                    <tr name="XYZ" class="product-row">
+                        <th scope="row">2</th>
+                        <td>
+                            <label>XYZ</label>
+                        </td>
+                        <td>
+                            <label>10</label>
+                        </td>
+                        <td class="input-quantity-col">
+                            <input type="number" class="form-control input-quantity" placeholder="Inter number of unit(s) to buy."
+                                value="0">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-9"> </div>
+                <div class="col-3">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Buy</button>
+                </div>
+            </div>
+        </div>
+        <div class="detail col-12">
+
+        </div>
+    </main>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+
+</body>
+
+</html>
