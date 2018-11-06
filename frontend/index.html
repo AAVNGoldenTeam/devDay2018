@@ -40,6 +40,10 @@
                     <a class="nav-link" id="exchanges-tab" data-toggle="tab" href="#panel-exchanges" role="tab"
                         aria-controls="panel-exchanges" aria-selected="false">Exchanges</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="transactions-tab" data-toggle="tab" href="#panel-transactions" role="tab"
+                        aria-controls="panel-transactions" aria-selected="false">Transactions</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -210,6 +214,61 @@
                                 <td class="actions-col">
                                     <input type="number" class="form-control input-quantity" placeholder="Inter number of unit(s) to buy."
                                         value="0">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-9"> </div>
+                        <div class="col-3">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Buy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail col-12">
+
+                </div>
+            </div>
+
+
+            <div class="tab-panel hide" id="panel-transactions" role="tabpanel" aria-labelledby="transactions-tab">
+                <div class="header col-12">
+                    <h1 class="h3 mb-3 font-weight-normal">Please choose product(s) to buy.</h1>
+                    <table id="productList" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col" class="actions-col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr name="ABC" class="product-row">
+                                <th scope="row">1</th>
+                                <td class="name-col">
+                                    <label>ABC</label>
+                                </td>
+                                <td class="price-col">
+                                    <label>10</label>
+                                <td class="actions-col">
+                                    <a href="#" class="action-edit">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr name="XYZ" class="product-row">
+                                <th scope="row">2</th>
+                                <td>
+                                    <label>XYZ</label>
+                                </td>
+                                <td>
+                                    <label>10</label>
+                                </td>
+                                <td class="actions-col">
+                                    <a href="#" class="action-edit">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
