@@ -35,14 +35,11 @@
                     <a class="nav-link" id="products-tab" data-toggle="tab" href="#panel-products" role="tab"
                         aria-controls="panel-products" aria-selected="false">Products</a>
                 </li>
+                
                 <li class="nav-item">
-                    <a class="nav-link disabled" id="create-polls-tab" data-toggle="tab" href="#panel-create-polls"
-                        role="tab" aria-controls="panel-create-polls" aria-selected="false">Create Polls</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" id="voting-tab" data-toggle="tab" href="#panel-voting" role="tab"
-                        aria-controls="panel-voting" aria-selected="false">Voting</a>
-                </li>
+                        <a class="nav-link" id="exchanges-tab" data-toggle="tab" href="#panel-exchanges" role="tab"
+                            aria-controls="panel-exchanges" aria-selected="false">Excahnges</a>
+                    </li>
             </ul>
         </div>
     </nav>
@@ -77,7 +74,7 @@
                         The System!</button>
                 </div>
             </div>
-            <div class="tab-pane " id="panel-products" role="tabpanel" aria-labelledby="products-tab">
+            <div class="tab-panel hide" id="panel-products" role="tabpanel" aria-labelledby="products-tab">
                 <div class="header col-12">
                     <form class="form-default">
                         <div class="col-12 text-center">
@@ -163,6 +160,57 @@
                     </table>
                 </div>
             </div>
+            <div class="tab-panel hide" id="panel-exchanges" role="tabpanel" aria-labelledby="exchanges-tab">
+                <div class="header col-12">
+                    <h1 class="h3 mb-3 font-weight-normal">Please choose product(s) to buy.</h1>
+                    <table id="productList" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col" class="actions-col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr name="ABC" class="product-row">
+                                <th scope="row">1</th>
+                                <td class="name-col">
+                                    <label>ABC</label>
+                                </td>
+                                <td class="price-col">
+                                    <label>10</label>
+                                <td class="actions-col">
+                                    <input type="number" class="form-control input-quantity" placeholder="Inter number of unit(s) to buy."
+                                        value="0">
+                                </td>
+                            </tr>
+                            <tr name="XYZ" class="product-row">
+                                <th scope="row">2</th>
+                                <td>
+                                    <label>XYZ</label>
+                                </td>
+                                <td>
+                                    <label>10</label>
+                                </td>
+                                <td class="actions-col">
+                                    <input type="number" class="form-control input-quantity" placeholder="Inter number of unit(s) to buy."
+                                        value="0">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-9"> </div>
+                        <div class="col-3">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Buy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail col-12">
+        
+                </div>
+            </div>
         </div>
     </main>
 
@@ -173,10 +221,28 @@
     <script src="js/GoldenSupplyChain.js"></script>
     <script src="js/index.js"></script>
     <script>
-        $(document).ready(function () {
-
-        });
-    </script>
+            $(document).ready(function () {
+                $('#productList').find('input').hide();
+                $('#productList').find('.update-actions').hide();
+                $('.action-edit').on('click', function () {
+                    var $parent = $(this).parents('tr[name]');
+                    $parent.find('label').hide();
+                    $parent.find('input').show();
+    
+                    $parent.find('.update-actions').show();
+                    $parent.find('.normal-actions').hide();
+                });
+                $('.action-cancel').on('click', function () {
+                    var $parent = $(this).parents('tr[name]');
+                    $parent.find('label').show();
+                    $parent.find('input').hide();
+    
+                    $parent.find('.update-actions').hide();
+                    $parent.find('.normal-actions').show();
+                });
+            });
+        </script>
+    
 
 </body>
 
