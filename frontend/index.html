@@ -35,11 +35,11 @@
                     <a class="nav-link" id="products-tab" data-toggle="tab" href="#panel-products" role="tab"
                         aria-controls="panel-products" aria-selected="false">Products</a>
                 </li>
-                
+
                 <li class="nav-item">
-                        <a class="nav-link" id="exchanges-tab" data-toggle="tab" href="#panel-exchanges" role="tab"
-                            aria-controls="panel-exchanges" aria-selected="false">Excahnges</a>
-                    </li>
+                    <a class="nav-link" id="exchanges-tab" data-toggle="tab" href="#panel-exchanges" role="tab"
+                        aria-controls="panel-exchanges" aria-selected="false">Excahnges</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -112,7 +112,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col" class="actions-col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -126,14 +126,21 @@
                                     <label>10</label>
                                     <input type="text" id="inputPrice" class="form-control" placeholder="Inter product price">
                                 </td>
-                                <td>
-                                    <a href="#" class="action-edit">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                <td class="actions-col">
+                                    <div class="normal-actions">
+                                        <a href="#" class="action-edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </div>
+                                    <div class="update-actions">
+                                        <a href="#" class="action-save">
+                                            <i class="fa fa-save"></i>
+                                        </a>
 
-                                    <a href="#" class="color-red">
-                                        <i class="fa fa-trash-alt"></i>
-                                    </a>
+                                        <a href="#" class="color-red action-cancel">
+                                            <i class="fa fa-ban"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr name="XYZ" class="product-row">
@@ -146,14 +153,21 @@
                                     <label>10</label>
                                     <input type="text" id="inputPrice" class="form-control" placeholder="Inter product price">
                                 </td>
-                                <td>
-                                    <a href="#" class="action-edit">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                <td class="actions-col">
+                                    <div class="normal-actions">
+                                        <a href="#" class="action-edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </div>
+                                    <div class="update-actions">
+                                        <a href="#" class="action-save">
+                                            <i class="fa fa-save"></i>
+                                        </a>
 
-                                    <a href="#" class="color-red">
-                                        <i class="fa fa-trash-alt"></i>
-                                    </a>
+                                        <a href="#" class="color-red action-cancel">
+                                            <i class="fa fa-ban"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -208,7 +222,7 @@
                     </div>
                 </div>
                 <div class="detail col-12">
-        
+
                 </div>
             </div>
         </div>
@@ -221,28 +235,28 @@
     <script src="js/GoldenSupplyChain.js"></script>
     <script src="js/index.js"></script>
     <script>
-            $(document).ready(function () {
-                $('#productList').find('input').hide();
-                $('#productList').find('.update-actions').hide();
-                $('.action-edit').on('click', function () {
-                    var $parent = $(this).parents('tr[name]');
-                    $parent.find('label').hide();
-                    $parent.find('input').show();
-    
-                    $parent.find('.update-actions').show();
-                    $parent.find('.normal-actions').hide();
-                });
-                $('.action-cancel').on('click', function () {
-                    var $parent = $(this).parents('tr[name]');
-                    $parent.find('label').show();
-                    $parent.find('input').hide();
-    
-                    $parent.find('.update-actions').hide();
-                    $parent.find('.normal-actions').show();
-                });
+        $(document).ready(function () {
+            $('#productList').find('input').hide();
+            $('#productList').find('.update-actions').hide();
+            $('.action-edit').on('click', function () {
+                var $parent = $(this).parents('tr[name]');
+                $parent.find('label').hide();
+                $parent.find('input').show();
+
+                $parent.find('.update-actions').show();
+                $parent.find('.normal-actions').hide();
             });
-        </script>
-    
+            $('.action-cancel').on('click', function () {
+                var $parent = $(this).parents('tr[name]');
+                $parent.find('label').show();
+                $parent.find('input').hide();
+
+                $parent.find('.update-actions').hide();
+                $parent.find('.normal-actions').show();
+            });
+        });
+    </script>
+
 
 </body>
 
